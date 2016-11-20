@@ -18,6 +18,8 @@ defmodule Elisnipper.Router do
 
     get "/", SnippetController, :index
 
-    resources "/snippets", SnippetController
+    resources "/snippets", SnippetController do
+      post "/comment", SnippetController, :add_a_comment
+    end
   end
 end

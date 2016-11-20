@@ -62,4 +62,8 @@ defmodule Elisnipper.SnippetController do
     |> put_flash(:info, "Snippet deleted successfully.")
     |> redirect(to: snippet_path(conn, :index))
   end
+
+  def add_a_comment(conn, {"id" => id, "comment" => comment_params}) do
+    #TODO implement
+  end
 end

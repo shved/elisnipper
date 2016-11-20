@@ -4,6 +4,7 @@ defmodule Elisnipper.Snippet do
   schema "snippets" do
     field :title, :string
     field :body, :string
+    has_many :comments, Elisnipper.Comment
 
     timestamps()
   end
@@ -15,5 +16,12 @@ defmodule Elisnipper.Snippet do
     struct
     |> cast(params, [:title, :body])
     |> validate_required([:title, :body])
+  end
+
+  def count_comments(query) do
+    from snippet in query,
+    group_by: snippet.id,
+    left_join: comment in assoc(snippet, :comments),
+    select: {comment, count(comment.id)}
   end
 end
