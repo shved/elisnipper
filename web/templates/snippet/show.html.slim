@@ -1,0 +1,13 @@
+h2 Show snippet
+
+ul
+  li
+    strong Title:&nbsp;
+    = @snippet.title
+  li
+    strong Body:&nbsp;
+    = @snippet.body
+
+= link "Edit", to: snippet_path(@conn, :edit, @snippet)
+| &nbsp;
+= link "Back", to: snippet_path(@conn, :index)

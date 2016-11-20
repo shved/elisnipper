@@ -1,0 +1,21 @@
+h2 Listing snippets
+
+table.table
+  thead
+    tr
+      th Title
+      th Body
+      th
+  tbody
+    = for snippet <- @snippets do
+      tr
+        td= snippet.title
+        td= snippet.body
+        td class="text-right"
+          = link "Show", to: snippet_path(@conn, :show, snippet), class: "btn btn-default btn-xs"
+          | &nbsp;
+          = link "Edit", to: snippet_path(@conn, :edit, snippet), class: "btn btn-default btn-xs"
+          | &nbsp;
+          = link "Delete", to: snippet_path(@conn, :delete, snippet), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs"
+
+= link "New snippet", to: snippet_path(@conn, :new)

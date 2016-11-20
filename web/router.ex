@@ -14,13 +14,10 @@ defmodule Elisnipper.Router do
   end
 
   scope "/", Elisnipper do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", SnippetController, :index
+
+    resources "/snippets", SnippetController
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", Elisnipper do
-  #   pipe_through :api
-  # end
 end
